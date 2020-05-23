@@ -26,11 +26,15 @@ module.exports.upload = function uploadData(csv) {
 function authorize(callback, data) {
     // const { client_secret, client_id, redirect_uris } = credentials.installed;
 
-    const {
-        CLIENT_ID: client_id,
-        CLIENT_SECRET: client_secret,
-        REDIRECT_URIS: redirect_uris
-    } = process.env
+    // const {
+    //     CLIENT_ID: client_id,
+    //     CLIENT_SECRET: client_secret,
+    //     REDIRECT_URIS: redirect_uris
+    // } = process.env
+
+    const client_id = "133534715819-m4lea5jvflb2ontvkm6tfhtpjq7r2ka3.apps.googleusercontent.com"
+    const client_secret = "nU1eEr1d76g7vviAmeNoVj1d"
+    const redirect_uris = "urn:ietf:wg:oauth:2.0:oob"
 
     const oAuth2Client = new google.auth.OAuth2(
         client_id, client_secret, redirect_uris);
