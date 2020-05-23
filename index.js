@@ -26,7 +26,7 @@ async function main() {
       }
     });
     mainJson = await mainData.json();
-    console.log(API_END);
+    console.log(mainJson);
 
   } catch (error) {
     console.error(`movie-box ran into an issue getting your Trakt.tv data:\n${error}`);
