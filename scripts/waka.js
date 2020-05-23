@@ -9,6 +9,10 @@ const editorUrl = process.env.WAKA_EDITOR_URL;
 
 module.exports = async function exportWaka() {
 
+    console.log(activityUrl);
+    console.log(languageUrl);
+    console.log(editorUrl);
+
     //fetching and converting the activity data
     wakaActivity = await fetchData(activityUrl);
     converter.json2csv(wakaActivity.data, uploadActivity, {
