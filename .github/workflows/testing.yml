@@ -3,7 +3,7 @@ on:
   push:
     branches: master
   schedule:
-    - cron: '10 0 * * 0'
+    - cron: '10 0 * * SUN'
   watch:
     types: [started]
 jobs:
