@@ -152,6 +152,7 @@ function uploadCSV(auth, data) {
     // const folderId = "15YI4CxUxSYWkhWwtla-_-eO39TtA7QjG"
 
 
+    console.log(folderId);
     var today = new Date();
     var monthName = month[today.getMonth()]
     var weekNumber = parseInt(today.getDate() / 7);
