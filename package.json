@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kvaishak/action_test#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "node-fetch": "^2.6.0"
   }
 }
