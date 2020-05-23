@@ -3,6 +3,7 @@ require('dotenv').config();
 var fs = require('fs');
 const fetch = require("node-fetch");
 const gdrive = require('./drive')
+const API_END = process.env.WAKATIME_URL;
 
 module.exports = async function exportWaka() {
 
@@ -16,8 +17,6 @@ module.exports = async function exportWaka() {
 
 async function fetchWakaData() {
 
-    // const API_END = process.env.WAKATIME_URL;
-    const API_END = "https://wakatime.com/share/@9163c678-083a-49b5-b1d3-186fd0467f8c/dab819c0-07de-41c8-8436-f513cf9df3c8.json"
     let mainData;
     console.log(API_END);
 
