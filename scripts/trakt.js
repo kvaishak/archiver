@@ -1,11 +1,13 @@
 require('dotenv').config();
 const fetch = require("node-fetch");
 
-const {
-    TRAKT_ID: traktId,
-    TRAKT_USERNAME: traktUser,
-} = process.env
+// const {
+//     TRAKT_ID: traktId,
+//     TRAKT_USERNAME: traktUser,
+// } = process.env
 
+const traktId = process.env.TRAKT_ID;
+const traktUser = process.env.TRAKT_USERNAME;
 const API_URL = 'https://api.trakt.tv';
 
 
@@ -15,6 +17,7 @@ module.exports.fetchData = async function main() {
         API_END = `${API_URL}/users/${traktUser}/${endpoint}`;
     let mainData;
 
+    console.log(traktUser);
 
     try {
         mainData = await fetch(API_END, {
