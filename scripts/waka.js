@@ -19,6 +19,7 @@ module.exports = async function exportWaka() {
 async function fetchWakaData() {
 
     let mainData;
+    console.log(API_END);
     try {
         mainData = await fetch(API_END, {
             headers: {
