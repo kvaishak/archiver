@@ -10,6 +10,10 @@ const SCOPES = ['https://www.googleapis.com/auth/drive'];
 // time.
 const TOKEN_PATH = 'token.json';
 
+const {
+    GDRIVE_FOLDER: folderId
+} = process.env
+
 // Load client secrets from a local file.
 module.exports.upload = function uploadData(csv) {
     authorize(uploadCSV, csv);
@@ -144,9 +148,7 @@ function uploadCSV(auth, data) {
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     // var folderId = process.env.GDRIVE_FOLDER;
     // const folderId = "15YI4CxUxSYWkhWwtla-_-eO39TtA7QjG"
-    const {
-        GDRIVE_FOLDER: folderId
-    } = process.env
+
 
     var today = new Date();
     var monthName = month[today.getMonth()]
