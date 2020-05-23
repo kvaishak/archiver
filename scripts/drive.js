@@ -10,9 +10,11 @@ const SCOPES = ['https://www.googleapis.com/auth/drive'];
 // time.
 const TOKEN_PATH = 'token.json';
 
-const {
-    GDRIVE_FOLDER: folderId
-} = process.env
+// const {
+//     GDRIVE_FOLDER: folderId
+// } = process.env
+
+const folderId = process.env.GDRIVE_FOLDER;
 
 // Load client secrets from a local file.
 module.exports.upload = function uploadData(csv) {
