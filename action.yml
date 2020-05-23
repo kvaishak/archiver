@@ -9,3 +9,16 @@ runs:
 branding:
   icon: film
   color: red
+
+
+name: trakt_update
+author: Vaishak
+description: Testing the github actions
+
+runs:
+  using: node12
+  main: ./tindex.js
+
+branding:
+  icon: film
+  color: red
