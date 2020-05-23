@@ -2,29 +2,27 @@ const converter = require('json-2-csv');
 require('dotenv').config();
 var fs = require('fs');
 const fetch = require("node-fetch");
-const gdrive = require('./drive')
+const gdrive = require('./drive');
+const waka_url = process.env.WAKA_URL;
+const wakaActivityUrl = process.env.WAKA_ACTIVITY_URL
 
-const activityUrl = process.env.WAKA_ACTIVITY_URL;
-const languageUrl = process.env.WAKA_LANG_URL;
-const editorUrl = process.env.WAKA_EDITOR_URL;
 
 module.exports = async function exportWaka() {
 
     //fetching and converting the activity data
-    let wakaActivity = await fetchData(activityUrl);
+    let wakaActivity = await fetchData(wakaActivityUrl);
     converter.json2csv(wakaActivity.data, uploadActivity, {
         prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
     });
 
     //fetching and converting the language data
-    let wakaLanguage = await fetchData(languageUrl);
-    converter.json2csv(wakaLanguage.data, uploadLanguage, {
+    let wakaData = await fetchData(waka_url);
+    converter.json2csv(wakaData.data.languages, uploadLanguage, {
         prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
     });
 
     //fetching and converting the editor data
-    let wakaEditor = await fetchData(editorUrl);
-    converter.json2csv(wakaEditor.data, uploadEditor, {
+    converter.json2csv(wakaData.data.editors, uploadEditor, {
         prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
     });
 }
@@ -39,6 +37,7 @@ async function fetchData(API_END) {
             }
         });
         mainJson = await mainData.json();
+        console.log(mainJson)
         return mainJson;
 
     } catch (error) {
