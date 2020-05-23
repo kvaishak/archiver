@@ -19,10 +19,10 @@ module.exports = async function exportWaka() {
         prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
     });
 
-    let wakaLanguage = await fetchData(languageUrl);
-    converter.json2csv(wakaLanguage.data, uploadLanguage, {
-        prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
-    });
+    // let wakaLanguage = await fetchData(languageUrl);
+    // converter.json2csv(wakaLanguage.data, uploadLanguage, {
+    //     prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
+    // });
 
     // let wakaEditor = await fetchData(editorUrl);
     // converter.json2csv(wakaEditor.data, uploadEditor, {
