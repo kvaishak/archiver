@@ -4,8 +4,6 @@ var fs = require('fs');
 const fetch = require("node-fetch");
 const gdrive = require('./drive')
 
-const API_END = process.env.WAKATIME_URL;
-
 module.exports = async function exportWaka() {
 
     //fetching the data
@@ -18,8 +16,10 @@ module.exports = async function exportWaka() {
 
 async function fetchWakaData() {
 
+    const API_END = process.env.WAKATIME_URL;
     let mainData;
     console.log(API_END);
+
     try {
         mainData = await fetch(API_END, {
             headers: {
