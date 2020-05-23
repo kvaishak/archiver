@@ -142,8 +142,8 @@ function uploadImage(auth) {
 function uploadCSV(auth, data) {
     const drive = google.drive({ version: 'v3', auth });
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    // var folderId = process.env.GDRIVE_FOLDER;
-    const folderId = "15YI4CxUxSYWkhWwtla-_-eO39TtA7QjG"
+    var folderId = process.env.GDRIVE_FOLDER;
+    // const folderId = "15YI4CxUxSYWkhWwtla-_-eO39TtA7QjG"
 
     var today = new Date();
     var monthName = month[today.getMonth()]
