@@ -19,6 +19,8 @@
   "homepage": "https://github.com/kvaishak/action_test#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "googleapis": "^39.2.0",
+    "json-2-csv": "^3.7.0",
     "node-fetch": "^2.6.0"
   }
 }
