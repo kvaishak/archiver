@@ -14,18 +14,18 @@ module.exports = async function exportWaka() {
     console.log(editorUrl);
 
     //fetching and converting the activity data
-    wakaActivity = await fetchData(activityUrl);
+    let wakaActivity = await fetchData(activityUrl);
     converter.json2csv(wakaActivity.data, uploadActivity, {
         prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
     });
 
-    wakaLanguage = await fetchData(languageUrl);
+    let wakaLanguage = await fetchData(languageUrl);
     converter.json2csv(wakaLanguage.data, uploadLanguage, {
         prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
     });
 
-    wakaLanguage = await fetchData(editorUrl);
-    converter.json2csv(wakaLanguage.data, uploadEditor, {
+    let wakaEditor = await fetchData(editorUrl);
+    converter.json2csv(wakaEditor.data, uploadEditor, {
         prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
     });
 }
