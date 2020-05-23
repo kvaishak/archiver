@@ -1,4 +1,4 @@
-name: action_test
+name: archive
 on:
   push:
     branches: master
