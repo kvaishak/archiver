@@ -4,12 +4,24 @@ var fs = require('fs');
 const fetch = require("node-fetch");
 const gdrive = require('./drive')
 const activityUrl = process.env.WAKA_ACTIVITY_URL;
+const languageUrl = process.env.WAKA_LANG_URL;
+const editorUrl = process.env.WAKA_EDITOR_URL;
 
 module.exports = async function exportWaka() {
 
     //fetching and converting the activity data
-    myWakaData = await fetchData(activityUrl);
-    converter.json2csv(myWakaData.data, uploadToDrive, {
+    wakaActivity = await fetchData(activityUrl);
+    converter.json2csv(wakaActivity.data, uploadActivity, {
+        prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
+    });
+
+    wakaLanguage = await fetchData(languageUrl);
+    converter.json2csv(wakaLanguage.data, uploadLanguage, {
+        prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
+    });
+
+    wakaLanguage = await fetchData(editorUrl);
+    converter.json2csv(wakaLanguage.data, uploadEditor, {
         prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
     });
 }
@@ -45,7 +57,17 @@ function json2csvCallback(err, csv) {
     });
 };
 
-function uploadToDrive(err, csv) {
-    console.log("CSV data successfully converted");
-    gdrive.upload(csv);
+function uploadActivity(err, csv) {
+    console.log("Activity CSV successfully converted");
+    gdrive.upload({ 'csv': csv, 'type': 'ACT' });
+}
+
+function uploadLanguage(err, csv) {
+    console.log("Language CSV successfully converted");
+    gdrive.upload({ 'csv': csv, 'type': 'LANG' });
+}
+
+function uploadEditor(err, csv) {
+    console.log("Editor CSV successfully converted");
+    gdrive.upload({ 'csv': csv, 'type': 'EDITOR' });
 }

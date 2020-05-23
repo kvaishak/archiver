@@ -18,6 +18,8 @@ jobs:
           TRAKT_ID: ${{ secrets.TRAKT_ID }}
           TRAKT_USERNAME: ${{ secrets.TRAKT_USERNAME }}
           WAKA_ACTIVITY_URL: ${{ secrets.WAKA_ACTIVITY_URL }}
+          WAKA_LANG_URL: ${{ secrets.WAKA_LANG_URL }}
+          WAKA_EDITOR_URL: ${{ secrets.WAKA_EDITOR_URL }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REDIRECT_URIS: ${{ secrets.REDIRECT_URIS }}

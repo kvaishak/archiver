@@ -19,8 +19,8 @@ const {
 
 
 // Load client secrets from a local file.
-module.exports.upload = function uploadData(csv) {
-    authorize(uploadCSV, csv);
+module.exports.upload = function uploadData(data) {
+    authorize(uploadCSV, data);
     // authorize(listFiles);
 }
 
@@ -144,7 +144,8 @@ function uploadCSV(auth, data) {
     var monthName = month[today.getMonth()]
     var weekNumber = parseInt(today.getDate() / 7);
 
-    var fileName = monthName + "_" + weekNumber;
+    var fileName = monthName + "_" + weekNumber + "_" + data.type;
+    var csv = data.csv;
 
     var fileMetadata = {
         'name': fileName,
@@ -153,7 +154,7 @@ function uploadCSV(auth, data) {
     };
     var media = {
         mimeType: 'text/csv',
-        body: data //fs.createReadStream('name.csv')
+        body: csv //fs.createReadStream('name.csv')
     };
     drive.files.create({
         resource: fileMetadata,
@@ -164,8 +165,8 @@ function uploadCSV(auth, data) {
             // Handle error
             console.error(err);
         } else {
-            console.log("File upload of csv in google sheet format successfull");
-            console.log('File Id:', file.id);
+            console.log(`File upload of ${fileName} in google sheet format successfull`);
+            // console.log('File Id:', file.id);
         }
     });
 }
