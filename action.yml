@@ -1,0 +1,11 @@
+name: action_test
+author: Vaishak
+description: Testing the github actions
+
+runs:
+  using: node12
+  main: ./index.js
+
+branding:
+  icon: film
+  color: red
