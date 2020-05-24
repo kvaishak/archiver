@@ -11,8 +11,8 @@ async function main() {
 
     //RESCUE ARCHIVER NEEDS TO BE RUN ONLY ONCE A MONTH
     var today = new Date();
-    var weekNumber = parseInt(today.getDate() / 7);
-    if (weekNumber === 0) {
+    var dateLength = parseInt(today.getDate().toString().length)
+    if (dateLength === 1) {
         rescue(); //will archive the last months data
     }
 }
