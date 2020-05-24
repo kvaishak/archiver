@@ -143,9 +143,17 @@ function uploadCSV(auth, data) {
     var today = new Date();
     var monthName = month[today.getMonth()]
     var weekNumber = parseInt(today.getDate() / 7);
+    var fileName;
 
-    var fileName = monthName + "_" + weekNumber + "_" + data.type;
+    if (data.type === "RESCUE") {
+        monthName = month[today.getMonth() - 1]
+        fileName = monthName + "_" + data.type;
+    } else {
+        fileName = monthName + "_" + weekNumber + "_" + data.type;
+    }
+
     var csv = data.csv;
+    console.log(data);
 
     var fileMetadata = {
         'name': fileName,

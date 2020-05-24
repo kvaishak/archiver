@@ -21,6 +21,7 @@
     "dotenv": "^8.2.0",
     "googleapis": "^39.2.0",
     "json-2-csv": "^3.7.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "urllib": "^2.35.0"
   }
 }
