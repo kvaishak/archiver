@@ -148,8 +148,10 @@ function uploadCSV(auth, data) {
     if (data.type === "RESCUE") {
         monthName = month[today.getMonth() - 1]
         fileName = monthName + "_" + data.type;
-    } else {
+    } else if (data.type === "ACT" || data.type === "LANG" || data.type === "EDITOR") {
         fileName = monthName + "_" + weekNumber + "_" + data.type;
+    } else {
+        fileName = data.type;
     }
 
     var csv = data.csv;

@@ -3,8 +3,9 @@ const waka = require('./scripts/waka');
 const rescue = require('./scripts/rescue');
 
 async function main() {
-    // var jj = await trakt.fetchData();
-    // console.log(jj);
+
+    //TRAKT EXPORTS ENTIRE DATA FROM THE ACCOUNT. SO ITS ADVISABLE TO NOT RUN THROUGH CRON
+    // trakt()
 
     //WAKA ARCHIVER WILL WORK BASED ON THE CRON SCHEDULE WHICH IS EVERY SUNDAY (ARCHIVING LAST 7 DAYS DATA)
     waka();

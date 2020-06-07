@@ -54,7 +54,6 @@ function json2csvCallback(err, csv) {
             console.log('Some error occured - file either not saved or corrupted file saved.');
         } else {
             console.log('It\'s saved!');
-            // gdrive.upload();
         }
     });
 };
