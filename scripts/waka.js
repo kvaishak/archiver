@@ -3,28 +3,36 @@ require('dotenv').config();
 var fs = require('fs');
 const fetch = require("node-fetch");
 const gdrive = require('./drive');
-const waka_url = process.env.WAKA_URL;
 const wakaActivityUrl = process.env.WAKA_ACTIVITY_URL
+const waka_name = process.env.WAKA_USERNAME
 
 
 module.exports = async function exportWaka() {
 
-    //fetching and converting the activity data
-    let wakaActivity = await fetchData(wakaActivityUrl);
-    converter.json2csv(wakaActivity.data, uploadActivity, {
-        prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
-    });
+    if (waka_name) {
+        let waka_url = `https://wakatime.com/api/v1/users/${waka_name}/stats/last_7_days`;
+        let wakaData = await fetchData(waka_url);
 
-    //fetching and converting the language data
-    let wakaData = await fetchData(waka_url);
-    converter.json2csv(wakaData.data.languages, uploadLanguage, {
-        prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
-    });
+        //fetching and converting the language data
+        converter.json2csv(wakaData.data.languages, uploadLanguage, {
+            prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
+        });
 
-    //fetching and converting the editor data
-    converter.json2csv(wakaData.data.editors, uploadEditor, {
-        prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
-    });
+        //fetching and converting the editor data
+        converter.json2csv(wakaData.data.editors, uploadEditor, {
+            prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
+        });
+    }
+
+
+    if (wakaActivityUrl) {
+        //fetching and converting the activity data
+        let wakaActivity = await fetchData(wakaActivityUrl);
+        converter.json2csv(wakaActivity.data, uploadActivity, {
+            prependHeader: true // removes the generated header of "value1,value2,value3,value4" (in case you don't want it)
+        });
+
+    }
 }
 
 async function fetchData(API_END) {
