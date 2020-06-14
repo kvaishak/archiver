@@ -30,6 +30,7 @@ Used for automatically archiving data from various 3rd Party Sources to Google D
 ### Google Drive
 **Note** : Follow the instructions from this [page](https://developers.google.com/drive/api/v3/quickstart/nodejs) to setup connection to your google drive.
 
-* Run the code initially in local machine to get all the required keys for google drive API. 
-* Once that is done, and .env/Github Secrets has been populated. It's ready for CRON job.
+* Run the code initially in local machine to token.json for google drive API and add it to the Root directory. 
+* Once that is done, and .env/Github Secrets has been populated with client-id and client-secret. It's ready for CRON job.
 * GDrive folder is optional. Will default to ROOT directory
+* Based on the expiry_date of the token.json, might have to generate new token.json from your localmachine.
