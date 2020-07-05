@@ -3,9 +3,8 @@ require('dotenv').config();
 var fs = require('fs');
 const fetch = require("node-fetch");
 const gdrive = require('./drive');
-const wakaActivityUrl = process.env.WAKA_ACTIVITY_URL
-const waka_name = process.env.WAKA_USERNAME
-
+const wakaActivityUrl = process.env.WAKA_ACTIVITY_URL;
+const waka_name = process.env.WAKA_USERNAME;
 
 module.exports = async function exportWaka() {
 
@@ -55,16 +54,28 @@ async function fetchData(API_END) {
 
 
 
-function json2csvCallback(err, csv) {
+function json2csvCallbackLang(err, csv) {
+    saveFile(csv, err, "Language");
+}
+
+function json2csvCallbackEditor(err, csv){
+    saveFile(csv, err, "Editor");
+}
+
+function json2csvCallbackActivity(err, csv){
+    saveFile(csv, err,  "Activity");
+}
+
+function saveFile(csv, err, type){
     if (err) throw err;
-    fs.writeFile('name.csv', csv, 'utf8', function(err) {
+    fs.writeFile(`${type}.csv`, csv, 'utf8', function(err) {
         if (err) {
             console.log('Some error occured - file either not saved or corrupted file saved.');
         } else {
             console.log('It\'s saved!');
         }
     });
-};
+}
 
 function uploadActivity(err, csv) {
     console.log("Activity CSV successfully converted");
